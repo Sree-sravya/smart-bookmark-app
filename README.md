@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Smart Bookmark App
 
-## Getting Started
+A full-stack bookmark management application built using Next.js, Supabase, and Google OAuth, deployed on Vercel.
 
-First, run the development server:
+Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+https://smart-bookmark-app-sravya.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tech Stack
+Next.js (App Router)
+Supabase (Database & Authentication)
+Google OAuth
+TypeScript
+Vercel (Deployment)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Features
+Google authentication
+Protected dashboard
+Add and delete bookmarks
+Persistent storage with Supabase
+Production deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Key Challenges & Solutions
+OAuth Redirect Issues (Production)
+After deployment, authentication redirected to localhost.
+Resolved by configuring:
+Authorized redirect URIs in Google Cloud
+Site URL and Redirect URLs in Supabase
+Environment Variables Not Working on Vercel
+Resolved by adding required environment variables in Vercel project settings:
+NEXT_PUBLIC_SUPABASE_URL
+NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-## Learn More
+Authentication Flow Handling
+Implemented session handling and protected routing to ensure only authenticated users can access the dashboard.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Learnings
+OAuth configuration in real-world environments
+Debugging deployment issues
+Managing environment variables securely
+Handling authentication in Next.js applications
