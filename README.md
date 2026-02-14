@@ -1,64 +1,6 @@
 Smart Bookmark App
+Live Demo: https://smart-bookmark-app-sravya.vercel.app
+Smart Bookmark App is a full-stack bookmark management application built using Next.js, Supabase, and Google OAuth, and deployed on Vercel. The application allows users to securely sign in using Google authentication, access a protected dashboard, and add or delete bookmarks that are stored persistently in a Supabase database. The project demonstrates secure authentication handling, session management, and protected routing to ensure that only authenticated users can access their data.
 
-A full-stack bookmark management application built using Next.js, Supabase, and Google OAuth, deployed on Vercel.
+During development and deployment, several real-world challenges were addressed. After deployment, authentication initially redirected to localhost instead of the production domain, which was resolved by correctly configuring authorized redirect URIs in Google Cloud and updating the Site URL and Redirect URLs in Supabase. Another issue occurred during deployment when environment variables were not recognized, causing build failures. This was fixed by properly configuring NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in Vercel’s environment settings. Through this project, I gained practical experience in OAuth configuration, production debugging, environment variable management, and authentication flow implementation in modern web applications.
 
-Live Demo
-
-https://smart-bookmark-app-sravya.vercel.app
-
-Tech Stack
-
-Next.js (App Router)
-
-Supabase (Database & Authentication)
-
-Google OAuth
-
-TypeScript
-
-Vercel (Deployment)
-
-Features
-
-Google authentication
-
-Protected dashboard
-
-Add and delete bookmarks
-
-Persistent storage with Supabase
-
-Production deployment
-
-Key Challenges & Solutions
-
-OAuth Redirect Issues (Production)
-After deployment, authentication redirected to localhost.
-Resolved by configuring:
-
-Authorized redirect URIs in Google Cloud
-
-Site URL and Redirect URLs in Supabase
-
-Correct callback URL for production
-
-Environment Variables Not Working on Vercel
-Build failed with supabaseUrl is required.
-Resolved by adding required environment variables in Vercel project settings:
-
-NEXT_PUBLIC_SUPABASE_URL
-
-NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-Authentication Flow Handling
-Implemented session handling and protected routing to ensure only authenticated users can access the dashboard.
-
-Learnings
-
-OAuth configuration in real-world environments
-
-Debugging deployment issues
-
-Managing environment variables securely
-
-Handling authentication in Next.js applicationsjs applications
