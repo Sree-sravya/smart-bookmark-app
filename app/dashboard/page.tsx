@@ -72,7 +72,10 @@ export default function Dashboard() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <h2>Welcome {user.email}</h2>
+        <h2 style={styles.welcomeText}>
+  Welcome {user.email}
+</h2>
+
         <button style={styles.logout} onClick={logout}>
           Logout
         </button>
@@ -120,11 +123,23 @@ const styles: any = {
     background: "#f5f7fb",
     minHeight: "100vh",
   },
+
   header: {
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: 30,
-  },
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: 30,
+  flexWrap: "wrap",
+  gap: 10,
+},
+
+welcomeText: {
+  wordBreak: "break-all",
+  flex: 1,
+  minWidth: 0,   // ⭐ important for flex overflow fix
+},
+
+
   logout: {
     background: "red",
     color: "white",
@@ -133,17 +148,22 @@ const styles: any = {
     borderRadius: 6,
     cursor: "pointer",
   },
+
   form: {
     display: "flex",
     gap: 10,
     marginBottom: 30,
+    flexWrap: "wrap",                // ✅ stack inputs on mobile
   },
+
   input: {
     padding: 10,
     borderRadius: 6,
     border: "1px solid #ccc",
-    width: 250,
+    width: "100%",                   // ✅ full width on mobile
+    maxWidth: 250,                   // ✅ keeps desktop same
   },
+
   add: {
     background: "#4f46e5",
     color: "white",
@@ -152,17 +172,20 @@ const styles: any = {
     borderRadius: 6,
     cursor: "pointer",
   },
+
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
     gap: 20,
   },
+
   card: {
     background: "white",
     padding: 20,
     borderRadius: 8,
     boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
   },
+
   delete: {
     marginTop: 10,
     background: "#ef4444",
@@ -173,3 +196,4 @@ const styles: any = {
     cursor: "pointer",
   },
 };
+
