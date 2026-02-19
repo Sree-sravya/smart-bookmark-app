@@ -102,8 +102,24 @@ export default function Dashboard() {
       <div style={styles.grid}>
         {bookmarks.map((b) => (
           <div key={b.id} style={styles.card}>
-            <h4>{b.title}</h4>
-            <a href={b.url} target="_blank">{b.url}</a>
+            <h4 style={{
+  color: "#000",
+  fontWeight: 700,
+  marginBottom: 6
+}}>
+  {b.title}
+</h4>
+            <a
+  href={b.url}
+  target="_blank"
+  style={{
+    color: "#1d4ed8",   // darker blue
+    wordBreak: "break-all"
+  }}
+>
+  {b.url}
+</a>
+
             <button
               style={styles.delete}
               onClick={() => deleteBookmark(b.id)}
@@ -180,11 +196,13 @@ welcomeText: {
   },
 
   card: {
-    background: "white",
-    padding: 20,
-    borderRadius: 8,
-    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-  },
+  background: "white",
+  padding: 20,
+  borderRadius: 8,
+  boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+  color: "#000",              // ⭐ force black text inside card
+},
+
 
   delete: {
     marginTop: 10,
