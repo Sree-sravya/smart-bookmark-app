@@ -71,16 +71,19 @@ export default function Dashboard() {
 
   return (
     <div style={styles.container}>
+      
+      {/* Header */}
       <div style={styles.header}>
         <h2 style={styles.welcomeText}>
-  Welcome {user.email}
-</h2>
+          Welcome {user.email}
+        </h2>
 
         <button style={styles.logout} onClick={logout}>
           Logout
         </button>
       </div>
 
+      {/* Form */}
       <div style={styles.form}>
         <input
           placeholder="Title"
@@ -99,36 +102,33 @@ export default function Dashboard() {
         </button>
       </div>
 
+      {/* Bookmarks */}
       <div style={styles.grid}>
         {bookmarks.map((b) => (
           <div key={b.id} style={styles.card}>
-            <h4 style={{
-  color: "#000",
-  fontWeight: 700,
-  marginBottom: 6
-}}>
-  {b.title}
-</h4>
-            <a
-  href={b.url}
-  target="_blank"
-  style={{
-    color: "#1d4ed8",   // darker blue
-    wordBreak: "break-all"
-  }}
->
-  {b.url}
-</a>
+            <h4 style={styles.title}>{b.title}</h4>
 
-            <button
-              style={styles.delete}
-              onClick={() => deleteBookmark(b.id)}
+            <a
+              href={b.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.link}
             >
-              Delete
-            </button>
+              {b.url}
+            </a>
+
+            <div style={styles.deleteContainer}>
+              <button
+                style={styles.delete}
+                onClick={() => deleteBookmark(b.id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>
+
     </div>
   );
 }
@@ -141,43 +141,42 @@ const styles: any = {
   },
 
   header: {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginBottom: 30,
-  flexWrap: "wrap",
-  gap: 10,
-},
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+    marginBottom: 30,
+  },
 
-welcomeText: {
-  wordBreak: "break-all",
-  flex: 1,
-  minWidth: 0,   // ⭐ important for flex overflow fix
-},
-
+  welcomeText: {
+    color: "#000",
+    fontWeight: 700,
+    wordBreak: "break-all",
+  },
 
   logout: {
-    background: "red",
+    background: "#dc2626",
     color: "white",
     border: "none",
-    padding: "8px 14px",
+    padding: "10px",
     borderRadius: 6,
     cursor: "pointer",
+    width: "100%",
+    fontWeight: 600,
   },
 
   form: {
     display: "flex",
     gap: 10,
     marginBottom: 30,
-    flexWrap: "wrap",                // ✅ stack inputs on mobile
+    flexWrap: "wrap",
   },
 
   input: {
     padding: 10,
     borderRadius: 6,
     border: "1px solid #ccc",
-    width: "100%",                   // ✅ full width on mobile
-    maxWidth: 250,                   // ✅ keeps desktop same
+    width: "100%",
+    maxWidth: 250,
   },
 
   add: {
@@ -196,22 +195,36 @@ welcomeText: {
   },
 
   card: {
-  background: "white",
-  padding: 20,
-  borderRadius: 8,
-  boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
-  color: "#000",              // ⭐ force black text inside card
-},
+    background: "white",
+    padding: 20,
+    borderRadius: 8,
+    boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
+    color: "#000",
+  },
 
+  title: {
+    color: "#000",
+    fontWeight: 700,
+    marginBottom: 6,
+  },
+
+  link: {
+    color: "#1d4ed8",
+    wordBreak: "break-all",
+  },
+
+  deleteContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: 12,
+  },
 
   delete: {
-    marginTop: 10,
     background: "#ef4444",
     color: "white",
     border: "none",
-    padding: "6px 10px",
+    padding: "6px 12px",
     borderRadius: 6,
     cursor: "pointer",
   },
 };
-
